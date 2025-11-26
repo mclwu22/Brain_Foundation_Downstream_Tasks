@@ -1,0 +1,7 @@
+checkpoints/
+*.pt
+*.pth
+*.tar
+*.ckpt
+*.log
+__pycache__/
