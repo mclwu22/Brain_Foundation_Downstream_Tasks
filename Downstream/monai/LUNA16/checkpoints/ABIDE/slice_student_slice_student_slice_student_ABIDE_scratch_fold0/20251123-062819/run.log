@@ -1,0 +1,36 @@
+2025-11-23 06:28:19,412 slice_student-Train
+2025-11-23 06:28:21,582 use: 1 gpus
+2025-11-23 06:28:22,936 Epoch: 0/100 lr 1.000000e-04
+2025-11-23 06:36:06,821 validating....
+2025-11-23 06:38:26,679 Epoch 1, validation AUC is 50.0000, training loss is 0.6942
+2025-11-23 06:38:27,110 Epoch: 1/100 lr 1.000000e-04
+2025-11-23 06:46:06,722 validating....
+2025-11-23 06:48:20,603 Epoch 2, validation AUC is 50.0000, training loss is 0.6934
+2025-11-23 06:48:20,606 Epoch: 2/100 lr 1.000000e-04
+2025-11-23 06:56:03,040 validating....
+2025-11-23 06:58:19,628 Epoch 3, validation AUC is 50.0000, training loss is 0.6933
+2025-11-23 06:58:19,630 Epoch: 3/100 lr 1.000000e-04
+2025-11-23 07:05:57,741 validating....
+2025-11-23 07:08:11,278 Epoch 4, validation AUC is 50.0000, training loss is 0.6932
+2025-11-23 07:08:11,280 Epoch: 4/100 lr 1.000000e-04
+2025-11-23 07:15:55,967 validating....
+2025-11-23 07:18:10,016 Epoch 5, validation AUC is 50.0000, training loss is 0.6930
+2025-11-23 07:18:10,018 Epoch: 5/100 lr 1.000000e-04
+2025-11-23 07:25:49,113 validating....
+2025-11-23 07:28:03,107 Epoch 6, validation AUC is 50.0000, training loss is 0.6931
+2025-11-23 07:28:03,109 Epoch: 6/100 lr 1.000000e-04
+2025-11-23 07:35:49,263 validating....
+2025-11-23 07:38:03,219 Epoch 7, validation AUC is 50.0000, training loss is 0.6931
+2025-11-23 07:38:03,221 Epoch: 7/100 lr 1.000000e-04
+2025-11-23 07:45:42,221 validating....
+2025-11-23 07:47:55,444 Epoch 8, validation AUC is 50.0000, training loss is 0.6930
+2025-11-23 07:47:55,446 Epoch: 8/100 lr 1.000000e-04
+2025-11-23 07:55:41,761 validating....
+2025-11-23 07:57:55,793 Epoch 9, validation AUC is 50.0000, training loss is 0.6931
+2025-11-23 07:57:55,795 Epoch: 9/100 lr 1.000000e-04
+2025-11-23 08:05:34,986 validating....
+2025-11-23 08:07:50,783 Epoch 10, validation AUC is 50.0000, training loss is 0.6932
+2025-11-23 08:07:50,785 Epoch: 10/100 lr 1.000000e-04
+2025-11-23 08:15:33,544 validating....
+2025-11-23 08:17:47,243 Epoch 11, validation AUC is 50.0000, training loss is 0.6931
+2025-11-23 08:17:47,245 Early Stopping

@@ -20,7 +20,7 @@ import pandas as pd
 from monai.utils import set_determinism
 
 from datasets_3D import get_dataloder_3D, datasets_dict_3D
-from datasets_2D import get_dataloder_2D, datasets_dict_2D
+# from datasets_2D import get_dataloder_2D, datasets_dict_2D
 from networks import get_networks, networks_dict, freeze_by_keywords, unfreeze_by_keywords
 from models import get_models, models_dict
 from utils.losses import CE_Dice_Loss, BCE_Dice_Loss, SoftDiceLoss, DiceLoss, MultiDiceLoss, BCEDiceLoss, TverskyLoss
@@ -57,10 +57,10 @@ config:
 """
 
 
-class BaseTrainer(object):
+class BaseTrainer(object,):
     def __init__(
             self,
-            config):
+            config,init_dataloader=True):
         """
        Steps:
            1、Init logger.
@@ -85,7 +85,8 @@ class BaseTrainer(object):
         self.recorder = Recorder(config)
         self.get_device()
         self.init_random_and_cudnn()
-        self.init_dataloader()
+        if init_dataloader:
+            self.init_dataloader()
         if self.config.model == 'Simple':
             self.init_model()
             self.model_to_gpu()  # must before initializing the optimizer
@@ -124,9 +125,13 @@ class BaseTrainer(object):
             torch.backends.cudnn.benchmark = self.config.benchmark
 
     def init_dataloader(self):
+        raise NotImplementedError("BaseTrainer does not handle dataloaders. Use custom trainer.")
         if '3d' in self.config.network:
             self.train_dataset, self.train_dataloader = get_dataloder_3D(self.config, flag="train", drop_last=True)
             self.eval_dataset, self.eval_dataloader = get_dataloder_3D(self.config, flag="valid", drop_last=False)
+        elif 'slice' in self.config.network:
+            self.train_dataset, self.train_dataloader = get_dataloder_2D(self.config, flag="train", drop_last=True)
+            self.eval_dataset, self.eval_dataloader = get_dataloder_2D(self.config, flag="valid", drop_last=False)
         else:
             self.train_dataset, self.train_dataloader = get_dataloder_2D(self.config, flag="train", drop_last=True)
             self.eval_dataset, self.eval_dataloader = get_dataloder_2D(self.config, flag="valid", drop_last=False)

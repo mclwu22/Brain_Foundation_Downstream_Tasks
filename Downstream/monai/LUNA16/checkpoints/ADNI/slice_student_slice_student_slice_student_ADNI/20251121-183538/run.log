@@ -1,0 +1,12 @@
+2025-11-21 18:35:38,009 slice_student-Train
+2025-11-21 18:35:39,028 use: 1 gpus
+2025-11-21 18:35:39,185 Epoch: 0/100 lr 1.000000e-04
+2025-11-21 18:42:08,751 validating....
+2025-11-21 18:44:46,017 Epoch 1, validation AUC is 70.7600, training loss is 1.0317
+2025-11-21 18:44:46,432 Epoch: 1/100 lr 1.000000e-04
+2025-11-21 18:51:20,922 validating....
+2025-11-21 18:53:58,082 Epoch 2, validation AUC is 72.5933, training loss is 0.9559
+2025-11-21 18:53:58,650 Epoch: 2/100 lr 1.000000e-04
+2025-11-21 19:00:33,595 validating....
+2025-11-21 19:03:10,513 Epoch 3, validation AUC is 74.0881, training loss is 0.9302
+2025-11-21 19:03:11,088 Epoch: 3/100 lr 1.000000e-04

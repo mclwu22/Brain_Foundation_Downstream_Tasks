@@ -8,7 +8,7 @@ import os
 from datasets_3D.paths import Path
 import SimpleITK as sitk
 from .base_seg import SegmentationBaseTrainset
-from monai.transforms import AddChannel, Compose, RandAffined, RandRotated, RandRotate90d, RandFlipd, apply_transform, ToTensor
+from monai.transforms import EnsureChannelFirst, Compose, RandAffined, RandRotated, RandRotate90d, RandFlipd, apply_transform, ToTensor
 
 
 class SegmentationLunaSet(SegmentationBaseTrainset):

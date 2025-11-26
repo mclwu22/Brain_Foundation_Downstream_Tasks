@@ -238,7 +238,7 @@ class NCECriterion(nn.Module):
 
 
 import torch.distributed as dist
-import diffdist
+# import diffdist
 
 
 def diff_gather(z):

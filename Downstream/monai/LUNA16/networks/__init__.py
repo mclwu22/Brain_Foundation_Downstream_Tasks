@@ -1,37 +1,40 @@
 import argparse
 from torch.nn import init
 from collections.abc import Iterable
-from networks.unet import UNet2D, U_Net_Encoder, UNet2D_Dense, UNet2D_RPL, UNet2D_JigSaw
-from networks.unet3d import UNet3D, UNet3D_Dense, UNet3D_Encoder, UNet3D_wo_skip, UNet3D_RPL, UNet3D_JigSaw, UNet3D_RKB, UNet3D_RKBP
-from networks.PCRL import PCRLModel
-from networks.PCRL3d import PCRLModel3d
-from networks.MyPCLR3d import PCRLEncoder3d, PCRLDecoder3d, PCRLDecoder3d_wo_skip
-from networks.MyPCRL2d import PCRLEncoder2d, PCRLDecoder2d
+# from networks.unet import UNet2D, U_Net_Encoder, UNet2D_Dense, UNet2D_RPL, UNet2D_JigSaw
+# from networks.unet3d import UNet3D, UNet3D_Dense, UNet3D_Encoder, UNet3D_wo_skip, UNet3D_RPL, UNet3D_JigSaw, UNet3D_RKB, UNet3D_RKBP
+# from networks.PCRL import PCRLModel
+# from networks.PCRL3d import PCRLModel3d
+# from networks.MyPCLR3d import PCRLEncoder3d, PCRLDecoder3d, PCRLDecoder3d_wo_skip
+# from networks.MyPCRL2d import PCRLEncoder2d, PCRLDecoder2d
+from networks.SliceStudent import SliceStudent
 
-from networks.swinunetr import Swin
+# from networks.swinunetr import Swin
 
 networks_dict= {
-    'unet_2d': UNet2D,
-    'unet_2d_dense': UNet2D_Dense,
-    'unet_2d_rpl': UNet2D_RPL,
-    'unet_2d_jigsaw':UNet2D_JigSaw,
-    'unet_3d': UNet3D,
-    'unet_3d_wo_skip': UNet3D_wo_skip,
-    'unet_encoder': U_Net_Encoder,
-    'unet_3d_encoder': UNet3D_Encoder,
-    'unet_3d_dense': UNet3D_Dense,
-    'unet_3d_rpl': UNet3D_RPL,
-    'unet_3d_jigsaw': UNet3D_JigSaw,
-    'unet_3d_rkb': UNet3D_RKB,
-    'unet_3d_rkbp': UNet3D_RKBP,
-    'pcrl': PCRLModel,
-    'pcrl_3d': PCRLModel3d,
-    'pcrl_3d_encoder': PCRLEncoder3d,
-    'pcrl_3d_decoder': PCRLDecoder3d,
-    'pcrl_2d_encoder': PCRLEncoder2d,
-    'pcrl_2d_decoder': PCRLDecoder2d,
+    # 'unet_2d': UNet2D,
+    # 'unet_2d_dense': UNet2D_Dense,
+    # 'unet_2d_rpl': UNet2D_RPL,
+    # 'unet_2d_jigsaw':UNet2D_JigSaw,
+    # 'unet_3d': UNet3D,
+    # 'unet_3d_wo_skip': UNet3D_wo_skip,
+    # 'unet_encoder': U_Net_Encoder,
+    # 'unet_3d_encoder': UNet3D_Encoder,
+    # 'unet_3d_dense': UNet3D_Dense,
+    # 'unet_3d_rpl': UNet3D_RPL,
+    # 'unet_3d_jigsaw': UNet3D_JigSaw,
+    # 'unet_3d_rkb': UNet3D_RKB,
+    # 'unet_3d_rkbp': UNet3D_RKBP,
+    # 'pcrl': PCRLModel,
+    # 'pcrl_3d': PCRLModel3d,
+    # 'pcrl_3d_encoder': PCRLEncoder3d,
+    # 'pcrl_3d_decoder': PCRLDecoder3d,
+    # 'pcrl_2d_encoder': PCRLEncoder2d,
+    # 'pcrl_2d_decoder': PCRLDecoder2d,
 
-    '3d_swin': Swin,
+    'slice_student': SliceStudent #新的 2.5D 模型
+    # ,
+    # '3d_swin': Swin,
 }
 
 
@@ -81,6 +84,13 @@ def get_networks(args):
     elif network_name == 'unet_2d_jigsaw':
         network = networks_dict[network_name](im_ch=args.im_channel, output_ch=args.order_class_num,
                                               num_cubes=args.num_grids_per_axis ** 2)
+    elif network_name == 'slice_student':
+        network = networks_dict[network_name](
+        n_slices=args.n_slices,
+        lora_rank=args.lora_rank,
+        ckpt_path=args.ckpt_path
+    )
+        return network
     else:
         network = networks_dict[network_name](args.im_channel, args.class_num, args.normalization)
 

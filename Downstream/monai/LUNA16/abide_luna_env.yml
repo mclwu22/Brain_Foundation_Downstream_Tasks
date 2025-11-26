@@ -1,0 +1,22 @@
+name: abide_luna
+channels:
+  - conda-forge
+  - defaults
+
+dependencies:
+  - python=3.10
+  - pip
+  - numpy
+  - scikit-learn
+  - pandas
+  - nibabel
+  - simpleitk
+  - tqdm
+  - monai=1.3.0
+  - pip:
+      - einops
+      - timm
+      - tensorboard
+      - tensorboardX
+      - matplotlib
+      - torchsummary
