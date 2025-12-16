@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+
+checkpoints/
+SWEEP_RESULT/
+debug_results/
+debug_results2/
+
+*.pth
+*.log
+events.out.tfevents*
